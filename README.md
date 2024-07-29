@@ -12,15 +12,13 @@ The Algerian Forest Linear Regression Project aims to predict the Fire Weather I
 
 ## Project Structure
 
-- `app.py`: The main Flask application for running the web server and handling predictions.
+- `application.py`: The main Flask application for running the web server and handling predictions.
 - `models/`: Directory containing pre-trained models and scaler files.
   - `ridge.pkl`: The trained Ridge Regression model.
   - `scaler.pkl`: The Standard Scaler used for feature scaling.
 - `templates/`: Directory containing HTML templates for the web interface.
-  - `home.html`: The main page with a form to input data and display predictions.
-- `static/`: Directory for static files like CSS stylesheets.
-  - `styles.css`: The stylesheet for styling the web interface.
-- `data/`: Directory for storing datasets (if applicable).
+  - `home.html`: The main page with a form to input data and display predictions.  
+- `dataset/`: Directory for storing datasets (if applicable).
 
 ## Installation
 
