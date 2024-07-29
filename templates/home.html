@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algerian Forest ML Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Black background */
+            color: #f0f0f0; /* Light gray text color for contrast */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            background: #1e1e1e; /* Dark gray background for container */
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        header {
+            background: #333; /* Dark gray background for header */
+            color: #f0f0f0; /* Light gray text color */
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .title-page {
+            text-align: center;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background: #444; /* Slightly lighter dark gray for title page */
+            border-radius: 8px;
+        }
+
+        .title-page h1 {
+            color: #fff; /* White color for title */
+            margin: 0;
+        }
+
+        .title-page p {
+            font-size: 1.2rem;
+            color: #ddd; /* Light gray color for description text */
+        }
+
+        .form-section {
+            margin-top: 2rem;
+        }
+
+        h2 {
+            color: #f0f0f0; /* Light gray color for section headings */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #ccc; /* Light gray color for labels */
+        }
+
+        input[type="text"] {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #555; /* Medium gray border */
+            border-radius: 4px;
+            font-size: 1rem;
+            width: 100%;
+            background: #333; /* Darker gray background for input fields */
+            color: #f0f0f0; /* Light gray text color for inputs */
+        }
+
+        button {
+            background-color: #555; /* Medium gray background for button */
+            color: #f0f0f0;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #777; /* Slightly lighter gray on hover */
+        }
+
+        .result {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #333; /* Dark gray background for result box */
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .result h2 {
+            margin: 0;
+            color: #f0f0f0; /* Light gray color for result text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Algerian Forest ML Project</h1>
+        </header>
+
+        <div class="title-page">
+            <h1>Welcome to the Algerian Forest ML Project</h1>
+            <p>This project focuses on predicting fire risk in Algerian forests using machine learning models. The model uses various meteorological and environmental features to predict the Fire Weather Index (FWI), which is a key indicator of fire risk.</p>
+        </div>
+
+        <section class="form-section">
+            <h2>Enter Data for Prediction</h2>
+            <form action="{{ url_for('predict_datapoint') }}" method="post">
+                <label for="Temperature">Temperature (°C):</label>
+                <input type="text" name="Temperature" id="Temperature" placeholder="Temperature" required="required" />
+                
+                <label for="RH">Relative Humidity (%):</label>
+                <input type="text" name="RH" id="RH" placeholder="RH" required="required" />
+                
+                <label for="Ws">Wind Speed (km/h):</label>
+                <input type="text" name="Ws" id="Ws" placeholder="Ws" required="required" />
+                
+                <label for="Rain">Rainfall (mm):</label>
+                <input type="text" name="Rain" id="Rain" placeholder="Rain" required="required" />
+                
+                <label for="FFMC">Fine Fuel Moisture Code (FFMC):</label>
+                <input type="text" name="FFMC" id="FFMC" placeholder="FFMC" required="required" />
+                
+                <label for="DMC">Duff Moisture Code (DMC):</label>
+                <input type="text" name="DMC" id="DMC" placeholder="DMC" required="required" />
+                
+                <label for="ISI">Initial Spread Index (ISI):</label>
+                <input type="text" name="ISI" id="ISI" placeholder="ISI" required="required" />
+                
+                <label for="Classes">Classes:</label>
+                <input type="text" name="Classes" id="Classes" placeholder="Classes" required="required" />
+                
+                <label for="Region">Region:</label>
+                <input type="text" name="Region" id="Region" placeholder="Region" required="required" />
+                
+                <button type="submit">Predict</button>
+            </form>
+            {% if results is not none %}
+                <div class="result">
+                    <h2>THE FWI prediction is: {{ results }}</h2>
+                </div>
+            {% endif %}
+        </section>
+    </div>
+</body>
+</html>
